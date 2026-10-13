@@ -1,0 +1,34 @@
+{% extends 'todos/base.html' %}
+
+{% block content %}
+
+
+<h2>{% if task %}Edit {% else %}Create {% endif %}Task</h2>
+{% if error %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" name="title" class="form-control" value="{{ task.title }}" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea name="description" class="form-control" rows="3" required>{{ task.description }}</textarea>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="is_completed" name="is_completed" {% if task.is_completed %}checked{% endif %}>
+        <label for="is_completed" class="form-check-label">Mark as Completed</label>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="{% url 'todos:home' %}" class="btn btn-secondary">Cancel</a>
+</form>
+
+{% endblock %}

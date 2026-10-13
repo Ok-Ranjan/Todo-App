@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync - Home</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'todos:home' %}">StudySync</a>
+            <a class="btn btn-primary" href="{% url 'todos:task_create' %}">Create Task</a>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}
+            <p>This is the home page of StudySync.</p>
+        {% endblock %}
+    </div>
+
+
+    {% block footer %}
+        <p>&copy; 2023 StudySync. All rights reserved.</p>
+    {% endblock %}
+</body>
+</html>
